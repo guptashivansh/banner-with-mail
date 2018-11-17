@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'gupta.shivansh98@gmail.com'
-EMAIL_HOST_PASSWORD = '#####'
+EMAIL_HOST_PASSWORD = '26111964'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
@@ -86,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'db_omoads',
         'USER': 'postgres',
-        'PASSWORD': '######',
+        'PASSWORD': 'motorola123',
         'HOST': 'localhost',
         'PORT': '',
     }
