@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br><br>
+  <body>
+   <h1> <a href='{% url "update-banner" object.name %}'>Edit Banner</a></h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-4">
+          <div class="card  my-3">
+            <div class="card-body">
+             <h1> {{ object.name }}</h1>
+             <p>Booking start date: {{ object.start_date }}</p>
+             <p>Booking end date: {{ object.end_date }}</p>
+             <p>Total Price: {{ object.total_price }}</p>
+             <p>Banner Installation date: {{ object.installation_date }}</p>
+             <p>Booking removal date: {{ object.removal_date}}</p>
+             <p>Number of Installments: {{ object.number_of_installments}}</p>
+             <hr/>
+             {% for i in banner.installmentnumber.all %}
+              <a href='{% url "update-installment" i.id %}'> Installment {{ forloop.counter }} (edit)</a><br>
+                Installment Price - {{i.installment_price}}<br>
+                Receiveing Date   - {{i.receiving_date}}
+                <br><br>
+             {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+{% endblock content %}

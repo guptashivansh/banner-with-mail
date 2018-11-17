@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+
+
+<h2>{{ block.super }}</h2>
+
+
+<body>
+  <br><br>
+  <h1 class="alt-h1 lh-condensed mt-2 mb-10 text-center">Meet some of us!</h1>
+  <section id="team-section" class="my-5 text-center bg-light text-muted">
+    <div class="container">
+      <div class="row">
+      {% for obj in object_list  %}
+        <div class="col-lg-4 col-md-4">
+          <div class="card  my-3">
+            <div class="card-body">
+              <a href='/{{ obj.name }}'>{{ obj.name }}</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+  	</div>
+  </section>
+</body>
+
+{% endblock %}
