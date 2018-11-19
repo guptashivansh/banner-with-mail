@@ -37,20 +37,17 @@ class BannerUpdateView(UpdateView):
 	model= banner
 	def form_valid(self, form):
 		instance = form.save(commit=False)
-		if (end_date in bannerForm.changed_data or 
-			number_of_installments in bannerForm.changed_data or 
-			installation_date in bannerForm.changed_data or 
-			removal_date in bannerForm.changed_data):
-
-			subject="Update Banner"
-			from_email = settings.EMAIL_HOST_USER
-			message="Yeh toh chal rahi hai"
-			to_email = [from_email,"guptashivansh007@gmail.com"]
-			send_mail(subject,
-					message,
-					from_email,
-					to_email,
-					fail_silently=False,)		
+		if bannerForm.has_changed:
+			print(bannerForm.changed_data)
+			# subject="Update Banner"
+			# from_email = settings.EMAIL_HOST_USER
+			# message="Yeh toh chal rahi hai"
+			# to_email = [from_email,"guptashivansh007@gmail.com"]
+			# send_mail(subject,
+			# 		message,
+			# 		from_email,
+			# 		to_email,
+			# 		fail_silently=False,)		
 		return super(BannerUpdateView,self).form_valid(form)
 
 	def get_context_data(self, *args, **kwargs):
@@ -79,17 +76,19 @@ class InstallmentUpdateView(UpdateView):
 
 	def form_valid(self, form):
 		instance = form.save(commit=False)
-		if receiving_date in installmentForm.changed_data:
+		changed_fields = installmentForm.changed_data
+		if 'receiving_date' in changed_fields:
+			print("yeh nahi chalne waala")
 		
-			subject="Update Installment"
-			from_email = settings.EMAIL_HOST_USER
-			message="Yeh toh chal rahi hai"
-			to_email = [from_email,"guptashivansh007@gmail.com"]
-			send_mail(subject,
-					message,
-					from_email,
-					to_email,
-					fail_silently=False,)		
+			# subject="Update Installment"
+			# from_email = settings.EMAIL_HOST_USER
+			# message="Yeh toh chal rahi hai"
+			# to_email = [from_email,"guptashivansh007@gmail.com"]
+			# send_mail(subject,
+			# 		message,
+			# 		from_email,
+			# 		to_email,
+			# 		fail_silently=False,)		
 		return super(InstallmentUpdateView,self).form_valid(form)
 
 class BannerDeleteView(DeleteView):
